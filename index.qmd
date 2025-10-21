@@ -1,5 +1,5 @@
 ---
-title: "Data Manipulation Challenge"
+title: "Ashwini's Data Manipulation Challenge"
 subtitle: "A Mental Model for Method Chaining in Pandas"
 format:
   html: default
