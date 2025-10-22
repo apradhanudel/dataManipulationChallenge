@@ -1,0 +1,1289 @@
+% Options for packages loaded elsewhere
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  letterpaper,
+  DIV=11,
+  numbers=noendperiod]{scrartcl}
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+% Make \paragraph and \subparagraph free-standing
+\makeatletter
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\makeatother
+
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{241,243,245}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.40,0.45,0.13}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.28,0.35,0.67}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.46,0.62}{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.07,0.07,0.07}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+
+
+
+
+
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
+
+ 
+
+
+\KOMAoption{captions}{tableheading}
+\makeatletter
+\@ifpackageloaded{tcolorbox}{}{\usepackage[skins,breakable]{tcolorbox}}
+\@ifpackageloaded{fontawesome5}{}{\usepackage{fontawesome5}}
+\definecolor{quarto-callout-color}{HTML}{909090}
+\definecolor{quarto-callout-note-color}{HTML}{0758E5}
+\definecolor{quarto-callout-important-color}{HTML}{CC1914}
+\definecolor{quarto-callout-warning-color}{HTML}{EB9113}
+\definecolor{quarto-callout-tip-color}{HTML}{00A047}
+\definecolor{quarto-callout-caution-color}{HTML}{FC5300}
+\definecolor{quarto-callout-color-frame}{HTML}{acacac}
+\definecolor{quarto-callout-note-color-frame}{HTML}{4582ec}
+\definecolor{quarto-callout-important-color-frame}{HTML}{d9534f}
+\definecolor{quarto-callout-warning-color-frame}{HTML}{f0ad4e}
+\definecolor{quarto-callout-tip-color-frame}{HTML}{02b875}
+\definecolor{quarto-callout-caution-color-frame}{HTML}{fd7e14}
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Table of contents}
+\else
+  \newcommand\contentsname{Table of contents}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{List of Figures}
+\else
+  \newcommand\listfigurename{List of Figures}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{List of Tables}
+\else
+  \newcommand\listtablename{List of Tables}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figure}
+\else
+  \newcommand\figurename{Figure}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Table}
+\else
+  \newcommand\tablename{Table}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Ashwini's Data Manipulation Challenge},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+
+\title{Ashwini's Data Manipulation Challenge}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{A Mental Model for Method Chaining in Pandas}
+\author{}
+\date{}
+\begin{document}
+\maketitle
+
+
+\section{🔗 Data Manipulation Challenge - A Mental Model for Method
+Chaining in
+Pandas}\label{data-manipulation-challenge---a-mental-model-for-method-chaining-in-pandas}
+
+\begin{tcolorbox}[enhanced jigsaw, colbacktitle=quarto-callout-important-color!10!white, opacitybacktitle=0.6, colframe=quarto-callout-important-color-frame, coltitle=black, left=2mm, titlerule=0mm, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{📊 Challenge Requirements In Section
+\hyperref[student-analysis-section]{Student Analysis Section}}, bottomtitle=1mm, opacityback=0, arc=.35mm, rightrule=.15mm, colback=white, breakable, bottomrule=.15mm, toprule=.15mm, toptitle=1mm, leftrule=.75mm]
+
+\begin{itemize}
+\tightlist
+\item
+  Complete all discussion questions for the seven mental models (plus
+  some extra requirements for higher grades)
+\end{itemize}
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[enhanced jigsaw, colbacktitle=quarto-callout-important-color!10!white, opacitybacktitle=0.6, colframe=quarto-callout-important-color-frame, coltitle=black, left=2mm, titlerule=0mm, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{🎯 Note on Python Usage}, bottomtitle=1mm, opacityback=0, arc=.35mm, rightrule=.15mm, colback=white, breakable, bottomrule=.15mm, toprule=.15mm, toptitle=1mm, leftrule=.75mm]
+
+\textbf{Recommended Workflow: Use Your Existing Virtual Environment} If
+you completed the Tech Setup Challenge Part 2, you already have a
+virtual environment set up! Here's how to use it for this new challenge:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Clone this new challenge repository} (see Getting Started
+  section below)
+\item
+  \textbf{Open the cloned repository in Cursor}
+\item
+  \textbf{Set this project to use your existing Python interpreter:}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Press \texttt{Ctrl+Shift+P} → ``Python: Select Interpreter''
+  \item
+    Navigate to and choose the interpreter from your existing virtual
+    environment (e.g.,
+    \texttt{your-previous-project/venv/Scripts/python.exe})
+  \end{itemize}
+\item
+  \textbf{Activate the environment in your terminal:}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Open terminal in Cursor (`Ctrl + ``)
+  \item
+    Navigate to your previous project folder where you have the
+    \texttt{venv} folder
+  \item
+    \textbf{💡 Pro tip:} You can quickly navigate by typing \texttt{cd}
+    followed by dragging the folder from your file explorer into the
+    terminal
+  \item
+    Activate using the appropriate command for your system:
+
+    \begin{itemize}
+    \tightlist
+    \item
+      \textbf{Windows Command Prompt:}
+      \texttt{venv\textbackslash{}Scripts\textbackslash{}activate}
+    \item
+      \textbf{Windows PowerShell:}
+      \texttt{.\textbackslash{}venv\textbackslash{}Scripts\textbackslash{}Activate.ps1}
+    \item
+      \textbf{Mac/Linux:} \texttt{source\ venv/bin/activate}
+    \end{itemize}
+  \item
+    You should see \texttt{(venv)} at the beginning of your terminal
+    prompt
+  \end{itemize}
+\item
+  \textbf{Install additional packages if needed:}
+  \texttt{pip\ install\ pandas\ numpy\ matplotlib\ seaborn}
+\end{enumerate}
+
+\begin{quote}
+\textbf{⚠️ Cloud Storage Warning}
+
+\textbf{Avoid using Google Drive, OneDrive, or other cloud storage for
+Python projects!} These services can cause issues with: - Package
+installations failing due to file locking - Virtual environment
+corruption - Slow performance during pip operations
+
+\textbf{Best practice:} Keep your Python projects in a local folder like
+\texttt{C:\textbackslash{}Users\textbackslash{}YourName\textbackslash{}Documents\textbackslash{}}
+or \texttt{\textasciitilde{}/Documents/} instead of cloud-synced
+folders.
+\end{quote}
+
+\textbf{Alternative: Create a New Virtual Environment} If you prefer a
+fresh environment, follow the Quarto documentation:
+\url{https://quarto.org/docs/projects/virtual-environments.html}. Be
+sure to follow the instructions to activate the environment, set it up
+as your default Python interpreter for the project, and install the
+necessary packages (e.g.~pandas) for this challenge. For installing the
+packages, you can use the \texttt{pip\ install\ -r\ requirements.txt}
+command since you already have the requirements.txt file in your
+project. Some steps do take a bit of time, so be patient.
+
+\textbf{Why This Works:} Virtual environments are portable - you can use
+the same environment across multiple projects, and Cursor automatically
+activates it when you select the interpreter!
+
+\end{tcolorbox}
+
+\subsection{The Problem: Mastering Data Manipulation Through Method
+Chaining}\label{the-problem-mastering-data-manipulation-through-method-chaining}
+
+\textbf{Core Question:} How can we efficiently manipulate datasets using
+\texttt{pandas} method chaining to answer complex business questions?
+
+\textbf{The Challenge:} Real-world data analysis requires combining
+multiple data manipulation techniques in sequence. Rather than creating
+intermediate variables at each step, method chaining allows us to write
+clean, readable code that flows logically from one operation to the
+next.
+
+\textbf{Our Approach:} We'll work with ZappTech's shipment data to
+answer critical business questions about service levels and
+cross-category orders, using the seven mental models of data
+manipulation through pandas method chaining.
+
+\begin{tcolorbox}[enhanced jigsaw, colbacktitle=quarto-callout-warning-color!10!white, opacitybacktitle=0.6, colframe=quarto-callout-warning-color-frame, coltitle=black, left=2mm, titlerule=0mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{⚠️ AI Partnership Required}, bottomtitle=1mm, opacityback=0, arc=.35mm, rightrule=.15mm, colback=white, breakable, bottomrule=.15mm, toprule=.15mm, toptitle=1mm, leftrule=.75mm]
+
+This challenge pushes boundaries intentionally. You'll tackle problems
+that normally require weeks of study, but with Cursor AI as your partner
+(and your brain keeping it honest), you can accomplish more than you
+thought possible.
+
+\textbf{The new reality:} The four stages of competence are Ignorance →
+Awareness → Learning → Mastery. AI lets us produce Mastery-level work
+while operating primarily in the Awareness stage. I focus on awareness
+training, you leverage AI for execution, and together we create outputs
+that used to require years of dedicated study.
+
+\end{tcolorbox}
+
+\subsection{The Seven Mental Models of Data
+Manipulation}\label{the-seven-mental-models-of-data-manipulation}
+
+The seven most important ways we manipulate datasets are:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Assign:} Add new variables with calculations and
+  transformations
+\item
+  \textbf{Subset:} Filter data based on conditions or select specific
+  columns
+\item
+  \textbf{Drop:} Remove unwanted variables or observations
+\item
+  \textbf{Sort:} Arrange data by values or indices
+\item
+  \textbf{Aggregate:} Summarize data using functions like mean, sum,
+  count
+\item
+  \textbf{Merge:} Combine information from multiple datasets
+\item
+  \textbf{Split-Apply-Combine:} Group data and apply functions within
+  groups
+\end{enumerate}
+
+\subsection{Data and Business Context}\label{data-and-business-context}
+
+We analyze ZappTech's shipment data, which contains information about
+product deliveries across multiple categories. This dataset is ideal for
+our analysis because:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Real Business Questions:} CEO wants to understand service
+  levels and cross-category shopping patterns
+\item
+  \textbf{Multiple Data Sources:} Requires merging shipment data with
+  product category information
+\item
+  \textbf{Complex Relationships:} Service levels may vary by product
+  category, and customers may order across categories
+\item
+  \textbf{Method Chaining Practice:} Perfect for demonstrating all seven
+  mental models in sequence
+\end{itemize}
+
+\subsection{Data Loading and Initial
+Exploration}\label{data-loading-and-initial-exploration}
+
+Let's start by loading the ZappTech shipment data and understanding what
+we're working with.
+
+\phantomsection\label{load-data}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# SSL Fix for macOS {-} Add this to bypass SSL certificate issues}
+\ImportTok{import}\NormalTok{ ssl}
+\ImportTok{import}\NormalTok{ urllib.request}
+
+\CommentTok{\# Create unverified SSL context for macOS}
+\NormalTok{ssl\_context }\OperatorTok{=}\NormalTok{ ssl.create\_default\_context()}
+\NormalTok{ssl\_context.check\_hostname }\OperatorTok{=} \VariableTok{False}
+\NormalTok{ssl\_context.verify\_mode }\OperatorTok{=}\NormalTok{ ssl.CERT\_NONE}
+
+\CommentTok{\# Install the SSL context}
+\NormalTok{urllib.request.install\_opener(}
+\NormalTok{    urllib.request.build\_opener(}
+\NormalTok{        urllib.request.HTTPSHandler(context}\OperatorTok{=}\NormalTok{ssl\_context)}
+\NormalTok{    )}
+\NormalTok{)}
+
+\ImportTok{import}\NormalTok{ pandas }\ImportTok{as}\NormalTok{ pd}
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\ImportTok{import}\NormalTok{ matplotlib.pyplot }\ImportTok{as}\NormalTok{ plt}
+\ImportTok{import}\NormalTok{ seaborn }\ImportTok{as}\NormalTok{ sns}
+\ImportTok{from}\NormalTok{ datetime }\ImportTok{import}\NormalTok{ datetime, timedelta}
+
+\CommentTok{\# Load the shipment data}
+\NormalTok{shipments\_df }\OperatorTok{=}\NormalTok{ pd.read\_csv(}
+    \StringTok{"https://raw.githubusercontent.com/flyaflya/persuasive/main/shipments.csv"}\NormalTok{, }
+\NormalTok{    parse\_dates}\OperatorTok{=}\NormalTok{[}\StringTok{\textquotesingle{}plannedShipDate\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}actualShipDate\textquotesingle{}}\NormalTok{]}
+\NormalTok{)}
+
+\CommentTok{\# Load product line data}
+\NormalTok{product\_line\_df }\OperatorTok{=}\NormalTok{ pd.read\_csv(}
+    \StringTok{"https://raw.githubusercontent.com/flyaflya/persuasive/main/productLine.csv"}
+\NormalTok{)}
+
+\CommentTok{\# Reduce dataset size for faster processing (4,000 rows instead of 96,805 rows)}
+\NormalTok{shipments\_df }\OperatorTok{=}\NormalTok{ shipments\_df.head(}\DecValTok{4000}\NormalTok{)}
+
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Shipments data shape:"}\NormalTok{, shipments\_df.shape)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}n}\StringTok{Shipments data columns:"}\NormalTok{, shipments\_df.columns.tolist())}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}n}\StringTok{First few rows of shipments data:"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(shipments\_df.head(}\DecValTok{10}\NormalTok{))}
+
+\BuiltInTok{print}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}n}\StringTok{"} \OperatorTok{+} \StringTok{"="}\OperatorTok{*}\DecValTok{50}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Product line data shape:"}\NormalTok{, product\_line\_df.shape)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}n}\StringTok{Product line data columns:"}\NormalTok{, product\_line\_df.columns.tolist())}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}n}\StringTok{First few rows of product line data:"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(product\_line\_df.head(}\DecValTok{10}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Shipments data shape: (4000, 5)
+
+Shipments data columns: ['shipID', 'plannedShipDate', 'actualShipDate', 'partID', 'quantity']
+
+First few rows of shipments data:
+   shipID plannedShipDate actualShipDate       partID  quantity
+0   10001      2013-11-06     2013-10-04  part92b16c5         6
+1   10002      2013-10-15     2013-10-04   part66983b         2
+2   10003      2013-10-25     2013-10-07  part8e36f25         1
+3   10004      2013-10-14     2013-10-08  part30f5de0         1
+4   10005      2013-10-14     2013-10-08  part9d64d35         6
+5   10006      2013-10-14     2013-10-08  part6cd6167        15
+6   10007      2013-10-14     2013-10-08  parta4d5fd1         2
+7   10008      2013-10-14     2013-10-08  part08cadf5         1
+8   10009      2013-10-14     2013-10-08  part5cc4989        10
+9   10010      2013-10-14     2013-10-08  part912ae4c         1
+
+==================================================
+Product line data shape: (11997, 3)
+
+Product line data columns: ['partID', 'productLine', 'prodCategory']
+
+First few rows of product line data:
+        partID productLine prodCategory
+0  part00005ba      line4c      Liquids
+1  part000b57d      line61     Machines
+2  part00123bf      linec1  Marketables
+3  part0021fc9      line61     Machines
+4  part0027e86      line2f     Machines
+5  part002ed95      line4c      Liquids
+6  part0030856      lineb8     Machines
+7  part0033dfd      line49      Liquids
+8  part0037a2a      linea3  Marketables
+9  part003caee      linea3  Marketables
+\end{verbatim}
+
+\begin{tcolorbox}[enhanced jigsaw, colbacktitle=quarto-callout-note-color!10!white, opacitybacktitle=0.6, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{💡 Understanding the Data}, bottomtitle=1mm, opacityback=0, arc=.35mm, rightrule=.15mm, colback=white, breakable, bottomrule=.15mm, toprule=.15mm, toptitle=1mm, leftrule=.75mm]
+
+\textbf{Shipments Data:} Contains individual line items for each
+shipment, including: - \texttt{shipID}: Unique identifier for each
+shipment - \texttt{partID}: Product identifier -
+\texttt{plannedShipDate}: When the shipment was supposed to go out -
+\texttt{actualShipDate}: When it actually shipped - \texttt{quantity}:
+How many units were shipped
+
+\textbf{Product Category and Line Data:} Contains product category
+information: - \texttt{partID}: Links to shipments data -
+\texttt{productLine}: The category each product belongs to -
+\texttt{prodCategory}: The category each product belongs to
+
+\textbf{Business Questions We'll Answer:} 1. Does service level (on-time
+shipments) vary across product categories? 2. How often do orders
+include products from more than one category?
+
+\end{tcolorbox}
+
+\subsection{The Seven Mental Models: A Progressive Learning
+Journey}\label{the-seven-mental-models-a-progressive-learning-journey}
+
+Now we'll work through each of the seven mental models using method
+chaining, starting simple and building complexity.
+
+\subsubsection{1. Assign: Adding New
+Variables}\label{assign-adding-new-variables}
+
+\textbf{Mental Model:} Create new columns with calculations and
+transformations.
+
+Let's start by calculating whether each shipment was late:
+
+\phantomsection\label{mental-model-1-assign}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Simple assignment {-} calculate if shipment was late}
+\NormalTok{shipments\_with\_lateness }\OperatorTok{=}\NormalTok{ (}
+\NormalTok{    shipments\_df}
+\NormalTok{    .assign(}
+\NormalTok{        is\_late}\OperatorTok{=}\KeywordTok{lambda}\NormalTok{ df: df[}\StringTok{\textquotesingle{}actualShipDate\textquotesingle{}}\NormalTok{] }\OperatorTok{\textgreater{}}\NormalTok{ df[}\StringTok{\textquotesingle{}plannedShipDate\textquotesingle{}}\NormalTok{],}
+\NormalTok{        days\_late}\OperatorTok{=}\KeywordTok{lambda}\NormalTok{ df: (df[}\StringTok{\textquotesingle{}actualShipDate\textquotesingle{}}\NormalTok{] }\OperatorTok{{-}}\NormalTok{ df[}\StringTok{\textquotesingle{}plannedShipDate\textquotesingle{}}\NormalTok{]).dt.days}
+\NormalTok{    )}
+\NormalTok{)}
+
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Added lateness calculations:"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(shipments\_with\_lateness[[}\StringTok{\textquotesingle{}shipID\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}plannedShipDate\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}actualShipDate\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}is\_late\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}days\_late\textquotesingle{}}\NormalTok{]].head())}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Added lateness calculations:
+   shipID plannedShipDate actualShipDate  is_late  days_late
+0   10001      2013-11-06     2013-10-04    False        -33
+1   10002      2013-10-15     2013-10-04    False        -11
+2   10003      2013-10-25     2013-10-07    False        -18
+3   10004      2013-10-14     2013-10-08    False         -6
+4   10005      2013-10-14     2013-10-08    False         -6
+\end{verbatim}
+
+\begin{tcolorbox}[enhanced jigsaw, colbacktitle=quarto-callout-tip-color!10!white, opacitybacktitle=0.6, colframe=quarto-callout-tip-color-frame, coltitle=black, left=2mm, titlerule=0mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{💡 Method Chaining Tip for New Python Users}, bottomtitle=1mm, opacityback=0, arc=.35mm, rightrule=.15mm, colback=white, breakable, bottomrule=.15mm, toprule=.15mm, toptitle=1mm, leftrule=.75mm]
+
+\textbf{Why use \texttt{lambda\ df:}?} When chaining methods, we need to
+reference the current state of the dataframe. The \texttt{lambda\ df:}
+tells pandas ``use the current dataframe in this calculation.'' Without
+it, pandas would look for a variable called \texttt{df} that doesn't
+exist.
+
+\textbf{Alternative approach:} You could also write this as separate
+steps, but method chaining keeps related operations together and makes
+the code more readable.
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[enhanced jigsaw, colbacktitle=quarto-callout-important-color!10!white, opacitybacktitle=0.6, colframe=quarto-callout-important-color-frame, coltitle=black, left=2mm, titlerule=0mm, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{🤔 Discussion Questions: Assign Mental Model}, bottomtitle=1mm, opacityback=0, arc=.35mm, rightrule=.15mm, colback=white, breakable, bottomrule=.15mm, toprule=.15mm, toptitle=1mm, leftrule=.75mm]
+
+\textbf{Question 1: Data Types and Date Handling} - What is the
+\texttt{dtype} of the \texttt{actualShipDate} series? How can you find
+out using code? - Why is it important that both \texttt{actualShipDate}
+and \texttt{plannedShipDate} have the same data type for comparison?
+
+\textbf{Question 2: String vs Date Comparison} - Can you give an example
+where comparing two dates as strings would yield unintuitive results,
+e.g.~what happens if you try to compare ``04-11-2025'' and
+``05-20-2024'' as strings vs as dates?
+
+\textbf{Question 3: Debug This Code}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# This code has an error {-} can you spot it?}
+\NormalTok{shipments\_with\_lateness }\OperatorTok{=}\NormalTok{ (}
+\NormalTok{    shipments\_df}
+\NormalTok{    .assign(}
+\NormalTok{        is\_late}\OperatorTok{=}\KeywordTok{lambda}\NormalTok{ df: df[}\StringTok{\textquotesingle{}actualShipDate\textquotesingle{}}\NormalTok{] }\OperatorTok{\textgreater{}}\NormalTok{ df[}\StringTok{\textquotesingle{}plannedShipDate\textquotesingle{}}\NormalTok{],}
+\NormalTok{        days\_late}\OperatorTok{=}\KeywordTok{lambda}\NormalTok{ df: (df[}\StringTok{\textquotesingle{}actualShipDate\textquotesingle{}}\NormalTok{] }\OperatorTok{{-}}\NormalTok{ df[}\StringTok{\textquotesingle{}plannedShipDate\textquotesingle{}}\NormalTok{]).dt.days,}
+\NormalTok{        lateStatement}\OperatorTok{=}\StringTok{"Darn Shipment is Late"} \ControlFlowTok{if}\NormalTok{ shipments\_df[}\StringTok{\textquotesingle{}is\_late\textquotesingle{}}\NormalTok{] }\ControlFlowTok{else} \StringTok{"Shipment is on Time"}
+\NormalTok{    )}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+What's wrong with the \texttt{lateStatement} assignment and how would
+you fix it?
+
+\end{tcolorbox}
+
+\paragraph{Briefly Give Answers to the Discussion Questions In This
+Section}\label{briefly-give-answers-to-the-discussion-questions-in-this-section}
+
+\begin{quote}
+Replace this with your answers to the discussion questions
+\end{quote}
+
+\subsubsection{2. Subset: Querying Rows and Filtering
+Columns}\label{subset-querying-rows-and-filtering-columns}
+
+\textbf{Mental Model:} Query rows based on conditions and filter to keep
+specific columns.
+
+Let's query for only late shipments and filter to keep the columns we
+need:
+
+\phantomsection\label{mental-model-2-subset}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Query rows for late shipments and filter to keep specific columns}
+\NormalTok{late\_shipments }\OperatorTok{=}\NormalTok{ (}
+\NormalTok{    shipments\_with\_lateness}
+\NormalTok{    .query(}\StringTok{\textquotesingle{}is\_late == True\textquotesingle{}}\NormalTok{)  }\CommentTok{\# Query rows where is\_late is True}
+\NormalTok{    .}\BuiltInTok{filter}\NormalTok{([}\StringTok{\textquotesingle{}shipID\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}partID\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}plannedShipDate\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}actualShipDate\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}days\_late\textquotesingle{}}\NormalTok{])  }\CommentTok{\# Filter to keep specific columns}
+\NormalTok{)}
+
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Found }\SpecialCharTok{\{}\BuiltInTok{len}\NormalTok{(late\_shipments)}\SpecialCharTok{\}}\SpecialStringTok{ late shipments out of }\SpecialCharTok{\{}\BuiltInTok{len}\NormalTok{(shipments\_with\_lateness)}\SpecialCharTok{\}}\SpecialStringTok{ total"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}n}\StringTok{Late shipments sample:"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(late\_shipments.head())}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Found 456 late shipments out of 4000 total
+
+Late shipments sample:
+     shipID       partID plannedShipDate actualShipDate  days_late
+776   10192  part0164a70      2013-10-09     2013-10-14          5
+777   10192  part9259836      2013-10-09     2013-10-14          5
+778   10192  part4526c73      2013-10-09     2013-10-14          5
+779   10192  partbb47e81      2013-10-09     2013-10-14          5
+780   10192  part008482f      2013-10-09     2013-10-14          5
+\end{verbatim}
+
+\begin{tcolorbox}[enhanced jigsaw, colbacktitle=quarto-callout-note-color!10!white, opacitybacktitle=0.6, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{🔍 Understanding the Methods}, bottomtitle=1mm, opacityback=0, arc=.35mm, rightrule=.15mm, colback=white, breakable, bottomrule=.15mm, toprule=.15mm, toptitle=1mm, leftrule=.75mm]
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{\texttt{.query()}}: Query rows based on conditions (like SQL
+  WHERE clause)
+\item
+  \textbf{\texttt{.filter()}}: Filter to keep specific columns by name
+\item
+  \textbf{Alternative}: You could use \texttt{.loc{[}{]}} for more
+  complex row querying, but \texttt{.query()} is often more readable
+\end{itemize}
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[enhanced jigsaw, colbacktitle=quarto-callout-important-color!10!white, opacitybacktitle=0.6, colframe=quarto-callout-important-color-frame, coltitle=black, left=2mm, titlerule=0mm, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{🤔 Discussion Questions: Subset Mental Model}, bottomtitle=1mm, opacityback=0, arc=.35mm, rightrule=.15mm, colback=white, breakable, bottomrule=.15mm, toprule=.15mm, toptitle=1mm, leftrule=.75mm]
+
+\textbf{Question 1: Query vs Boolean Indexing} - What's the difference
+between using
+\texttt{.query(\textquotesingle{}is\_late\ ==\ True\textquotesingle{})}
+and
+\texttt{{[}df{[}\textquotesingle{}is\_late\textquotesingle{}{]}\ ==\ True{]}}?
+- Which approach is more readable and why?
+
+\textbf{Question 2: Additional Row Querying} - Can you show an example
+of using a variable like \texttt{late\_threshold} to query rows for
+shipments that are at least \texttt{late\_threshold} days late,
+e.g.~what if you wanted to query rows for shipments that are at least 5
+days late?
+
+\end{tcolorbox}
+
+\paragraph{Briefly Give Answers to the Discussion Questions In This
+Section}\label{briefly-give-answers-to-the-discussion-questions-in-this-section-1}
+
+\begin{quote}
+Replace this with your answers to the discussion questions
+\end{quote}
+
+\subsubsection{3. Drop: Removing Unwanted
+Data}\label{drop-removing-unwanted-data}
+
+\textbf{Mental Model:} Remove columns or rows you don't need.
+
+Let's clean up our data by removing unnecessary columns:
+
+\phantomsection\label{mental-model-3-drop}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create a cleaner dataset by dropping unnecessary columns}
+\NormalTok{clean\_shipments }\OperatorTok{=}\NormalTok{ (}
+\NormalTok{    shipments\_with\_lateness}
+\NormalTok{    .drop(columns}\OperatorTok{=}\NormalTok{[}\StringTok{\textquotesingle{}quantity\textquotesingle{}}\NormalTok{])  }\CommentTok{\# Drop quantity column (not needed for our analysis)}
+\NormalTok{    .dropna(subset}\OperatorTok{=}\NormalTok{[}\StringTok{\textquotesingle{}plannedShipDate\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}actualShipDate\textquotesingle{}}\NormalTok{])  }\CommentTok{\# Remove rows with missing dates}
+\NormalTok{)}
+
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Cleaned dataset: }\SpecialCharTok{\{}\BuiltInTok{len}\NormalTok{(clean\_shipments)}\SpecialCharTok{\}}\SpecialStringTok{ rows, }\SpecialCharTok{\{}\BuiltInTok{len}\NormalTok{(clean\_shipments.columns)}\SpecialCharTok{\}}\SpecialStringTok{ columns"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Remaining columns:"}\NormalTok{, clean\_shipments.columns.tolist())}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Cleaned dataset: 4000 rows, 6 columns
+Remaining columns: ['shipID', 'plannedShipDate', 'actualShipDate', 'partID', 'is_late', 'days_late']
+\end{verbatim}
+
+\begin{tcolorbox}[enhanced jigsaw, colbacktitle=quarto-callout-important-color!10!white, opacitybacktitle=0.6, colframe=quarto-callout-important-color-frame, coltitle=black, left=2mm, titlerule=0mm, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{🤔 Discussion Questions: Drop Mental Model}, bottomtitle=1mm, opacityback=0, arc=.35mm, rightrule=.15mm, colback=white, breakable, bottomrule=.15mm, toprule=.15mm, toptitle=1mm, leftrule=.75mm]
+
+\textbf{Question 1: Drop vs Filter Strategies} - What's the difference
+between
+\texttt{.drop(columns={[}\textquotesingle{}quantity\textquotesingle{}{]})}
+and \texttt{.filter()} with a list of columns you want to keep? - When
+would you choose to drop columns vs filter to keep specific columns?
+
+\textbf{Question 2: Handling Missing Data} - What happens if you use
+\texttt{.dropna()} without specifying \texttt{subset}? How is this
+different from
+\texttt{.dropna(subset={[}\textquotesingle{}plannedShipDate\textquotesingle{},\ \textquotesingle{}actualShipDate\textquotesingle{}{]})}?
+- Why might you want to be selective about which columns to check for
+missing values?
+
+\end{tcolorbox}
+
+\paragraph{Briefly Give Answers to the Discussion Questions In This
+Section}\label{briefly-give-answers-to-the-discussion-questions-in-this-section-2}
+
+\begin{quote}
+Replace this with your answers to the discussion questions
+\end{quote}
+
+\subsubsection{4. Sort: Arranging Data}\label{sort-arranging-data}
+
+\textbf{Mental Model:} Order data by values or indices.
+
+Let's sort by lateness to see the worst offenders:
+
+\phantomsection\label{mental-model-4-sort}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Sort by days late (worst first)}
+\NormalTok{sorted\_by\_lateness }\OperatorTok{=}\NormalTok{ (}
+\NormalTok{    clean\_shipments}
+\NormalTok{    .sort\_values(}\StringTok{\textquotesingle{}days\_late\textquotesingle{}}\NormalTok{, ascending}\OperatorTok{=}\VariableTok{False}\NormalTok{)  }\CommentTok{\# Sort by days\_late, highest first}
+\NormalTok{    .reset\_index(drop}\OperatorTok{=}\VariableTok{True}\NormalTok{)  }\CommentTok{\# Reset index to be sequential}
+\NormalTok{)}
+
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Shipments sorted by lateness (worst first):"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(sorted\_by\_lateness[[}\StringTok{\textquotesingle{}shipID\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}partID\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}days\_late\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}is\_late\textquotesingle{}}\NormalTok{]].head(}\DecValTok{10}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Shipments sorted by lateness (worst first):
+   shipID       partID  days_late  is_late
+0   10956  part795d1a4         21     True
+1   10956  partf23fd1e         21     True
+2   10956  partc653823         21     True
+3   10956  partb6208b5         21     True
+4   10956  parte820e31         21     True
+5   10956  part50c6b9a         21     True
+6   10956  part1fedfcf         21     True
+7   10956  part3017fa1         21     True
+8   10956  part66bb851         21     True
+9   10956  partd5b19e4         21     True
+\end{verbatim}
+
+\begin{tcolorbox}[enhanced jigsaw, colbacktitle=quarto-callout-important-color!10!white, opacitybacktitle=0.6, colframe=quarto-callout-important-color-frame, coltitle=black, left=2mm, titlerule=0mm, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{🤔 Discussion Questions: Sort Mental Model}, bottomtitle=1mm, opacityback=0, arc=.35mm, rightrule=.15mm, colback=white, breakable, bottomrule=.15mm, toprule=.15mm, toptitle=1mm, leftrule=.75mm]
+
+\textbf{Question 1: Sorting Strategies} - What's the difference between
+\texttt{ascending=False} and \texttt{ascending=True} in sorting? - How
+would you sort by multiple columns (e.g., first by \texttt{is\_late},
+then by \texttt{days\_late})?
+
+\textbf{Question 2: Index Management} - Why do we use
+\texttt{.reset\_index(drop=True)} after sorting? - What happens to the
+original index when you sort? Why might this be problematic?
+
+\end{tcolorbox}
+
+\paragraph{Briefly Give Answers to the Discussion Questions In This
+Section}\label{briefly-give-answers-to-the-discussion-questions-in-this-section-3}
+
+\begin{quote}
+Replace this with your answers to the discussion questions
+\end{quote}
+
+\subsubsection{5. Aggregate: Summarizing
+Data}\label{aggregate-summarizing-data}
+
+\textbf{Mental Model:} Calculate summary statistics across groups or the
+entire dataset.
+
+Let's calculate overall service level metrics:
+
+\phantomsection\label{mental-model-5-aggregate}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Calculate overall service level metrics}
+\NormalTok{service\_metrics }\OperatorTok{=}\NormalTok{ (}
+\NormalTok{    clean\_shipments}
+\NormalTok{    .agg(\{}
+        \StringTok{\textquotesingle{}is\_late\textquotesingle{}}\NormalTok{: [}\StringTok{\textquotesingle{}count\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}sum\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}mean\textquotesingle{}}\NormalTok{],  }\CommentTok{\# Count total, count late, calculate percentage}
+        \StringTok{\textquotesingle{}days\_late\textquotesingle{}}\NormalTok{: [}\StringTok{\textquotesingle{}mean\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}max\textquotesingle{}}\NormalTok{]  }\CommentTok{\# Average and maximum days late}
+\NormalTok{    \})}
+\NormalTok{    .}\BuiltInTok{round}\NormalTok{(}\DecValTok{3}\NormalTok{)}
+\NormalTok{)}
+
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Overall Service Level Metrics:"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(service\_metrics)}
+
+\CommentTok{\# Calculate percentage on{-}time directly from the data}
+\NormalTok{on\_time\_rate }\OperatorTok{=}\NormalTok{ (}\DecValTok{1} \OperatorTok{{-}}\NormalTok{ clean\_shipments[}\StringTok{\textquotesingle{}is\_late\textquotesingle{}}\NormalTok{].mean()) }\OperatorTok{*} \DecValTok{100}
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"}\CharTok{\textbackslash{}n}\SpecialStringTok{On{-}time delivery rate: }\SpecialCharTok{\{}\NormalTok{on\_time\_rate}\SpecialCharTok{:.1f\}}\SpecialStringTok{\%"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Overall Service Level Metrics:
+        is_late  days_late
+count  4000.000        NaN
+sum     456.000        NaN
+mean      0.114     -0.974
+max         NaN     21.000
+
+On-time delivery rate: 88.6%
+\end{verbatim}
+
+\begin{tcolorbox}[enhanced jigsaw, colbacktitle=quarto-callout-important-color!10!white, opacitybacktitle=0.6, colframe=quarto-callout-important-color-frame, coltitle=black, left=2mm, titlerule=0mm, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{🤔 Discussion Questions: Aggregate Mental Model}, bottomtitle=1mm, opacityback=0, arc=.35mm, rightrule=.15mm, colback=white, breakable, bottomrule=.15mm, toprule=.15mm, toptitle=1mm, leftrule=.75mm]
+
+\textbf{Question 1: Boolean Aggregation} - Why does \texttt{sum()} work
+on boolean values? What does it count?
+
+\end{tcolorbox}
+
+\paragraph{Briefly Give Answers to the Discussion Questions In This
+Section}\label{briefly-give-answers-to-the-discussion-questions-in-this-section-4}
+
+\begin{quote}
+Replace this with your answers to the discussion questions
+\end{quote}
+
+\subsubsection{6. Merge: Combining
+Information}\label{merge-combining-information}
+
+\textbf{Mental Model:} Join data from multiple sources to create richer
+datasets.
+
+Now let's analyze service levels by product category. First, we need to
+merge our data:
+
+\phantomsection\label{mental-model-6-merge-prep}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Merge shipment data with product line data}
+\NormalTok{shipments\_with\_category }\OperatorTok{=}\NormalTok{ (}
+\NormalTok{    clean\_shipments}
+\NormalTok{    .merge(product\_line\_df, on}\OperatorTok{=}\StringTok{\textquotesingle{}partID\textquotesingle{}}\NormalTok{, how}\OperatorTok{=}\StringTok{\textquotesingle{}left\textquotesingle{}}\NormalTok{)  }\CommentTok{\# Left join to keep all shipments}
+\NormalTok{    .assign(}
+\NormalTok{        category\_late}\OperatorTok{=}\KeywordTok{lambda}\NormalTok{ df: df[}\StringTok{\textquotesingle{}is\_late\textquotesingle{}}\NormalTok{] }\OperatorTok{\&}\NormalTok{ df[}\StringTok{\textquotesingle{}prodCategory\textquotesingle{}}\NormalTok{].notna()  }\CommentTok{\# Only count as late if we have category info}
+\NormalTok{    )}
+\NormalTok{)}
+
+\BuiltInTok{print}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}n}\StringTok{Product categories available:"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(shipments\_with\_category[}\StringTok{\textquotesingle{}prodCategory\textquotesingle{}}\NormalTok{].value\_counts())}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+
+Product categories available:
+prodCategory
+Marketables    1850
+Machines        846
+SpareParts      767
+Liquids         537
+Name: count, dtype: int64
+\end{verbatim}
+
+\begin{tcolorbox}[enhanced jigsaw, colbacktitle=quarto-callout-important-color!10!white, opacitybacktitle=0.6, colframe=quarto-callout-important-color-frame, coltitle=black, left=2mm, titlerule=0mm, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{🤔 Discussion Questions: Merge Mental Model}, bottomtitle=1mm, opacityback=0, arc=.35mm, rightrule=.15mm, colback=white, breakable, bottomrule=.15mm, toprule=.15mm, toptitle=1mm, leftrule=.75mm]
+
+\textbf{Question 1: Join Types and Data Loss} - Why does your professor
+think we should use
+\texttt{how=\textquotesingle{}left\textquotesingle{}} in most cases? -
+How can you check if any shipments were lost during the merge?
+
+\textbf{Question 2: Key Column Matching} - What happens if there are
+duplicate \texttt{partID} values in the \texttt{product\_line\_df}?
+
+\end{tcolorbox}
+
+\paragraph{Briefly Give Answers to the Discussion Questions In This
+Section}\label{briefly-give-answers-to-the-discussion-questions-in-this-section-5}
+
+\begin{quote}
+Replace this with your answers to the discussion questions
+\end{quote}
+
+\subsubsection{7. Split-Apply-Combine: Group
+Analysis}\label{split-apply-combine-group-analysis}
+
+\textbf{Mental Model:} Group data and apply functions within each group.
+
+Now let's analyze service levels by category:
+
+\phantomsection\label{mental-model-7-groupby}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Analyze service levels by product category}
+\NormalTok{service\_by\_category }\OperatorTok{=}\NormalTok{ (}
+\NormalTok{    shipments\_with\_category}
+\NormalTok{    .groupby(}\StringTok{\textquotesingle{}prodCategory\textquotesingle{}}\NormalTok{)  }\CommentTok{\# Split by product category}
+\NormalTok{    .agg(\{}
+        \StringTok{\textquotesingle{}is\_late\textquotesingle{}}\NormalTok{: [}\StringTok{\textquotesingle{}any\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}count\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}sum\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}mean\textquotesingle{}}\NormalTok{],  }\CommentTok{\# Count, late count, percentage late}
+        \StringTok{\textquotesingle{}days\_late\textquotesingle{}}\NormalTok{: [}\StringTok{\textquotesingle{}mean\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}max\textquotesingle{}}\NormalTok{]  }\CommentTok{\# Average and max days late}
+\NormalTok{    \})}
+\NormalTok{    .}\BuiltInTok{round}\NormalTok{(}\DecValTok{3}\NormalTok{)}
+\NormalTok{)}
+
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Service Level by Product Category:"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(service\_by\_category)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Service Level by Product Category:
+             is_late                   days_late    
+                 any count  sum   mean      mean max
+prodCategory                                        
+Liquids         True   537   22  0.041    -0.950  19
+Machines        True   846  152  0.180    -1.336  21
+Marketables     True  1850  145  0.078    -0.804  21
+SpareParts      True   767  137  0.179    -1.003  21
+\end{verbatim}
+
+\begin{tcolorbox}[enhanced jigsaw, colbacktitle=quarto-callout-important-color!10!white, opacitybacktitle=0.6, colframe=quarto-callout-important-color-frame, coltitle=black, left=2mm, titlerule=0mm, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{🤔 Discussion Questions: Split-Apply-Combine Mental Model}, bottomtitle=1mm, opacityback=0, arc=.35mm, rightrule=.15mm, colback=white, breakable, bottomrule=.15mm, toprule=.15mm, toptitle=1mm, leftrule=.75mm]
+
+\textbf{Question 1: GroupBy Mechanics} - What does
+\texttt{.groupby(\textquotesingle{}prodCategory\textquotesingle{})}
+actually do? How does it ``split'' the data? - Why do we need to use
+\texttt{.agg()} after grouping? What happens if you don't?
+
+\textbf{Question 2: Multi-Level Grouping} - Explore grouping by
+\texttt{{[}\textquotesingle{}shipID\textquotesingle{},\ \textquotesingle{}prodCategory\textquotesingle{}{]}}?
+What question does this answer versus grouping by
+\texttt{\textquotesingle{}prodCategory\textquotesingle{}} alone? (HINT:
+There may be many rows with identical shipID's due to a particular order
+having multiple partID's.)
+
+\end{tcolorbox}
+
+\paragraph{Briefly Give Answers to the Discussion Questions In This
+Section}\label{briefly-give-answers-to-the-discussion-questions-in-this-section-6}
+
+\begin{quote}
+Replace this with your answers to the discussion questions
+\end{quote}
+
+\subsection{Answering A Business
+Question}\label{answering-a-business-question}
+
+\textbf{Mental Model:} Combine multiple data manipulation techniques to
+answer complex business questions.
+
+Let's create a comprehensive analysis by combining shipment-level data
+with category information:
+
+\phantomsection\label{mental-model-7-comprehensive}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create a comprehensive analysis dataset}
+\NormalTok{comprehensive\_analysis }\OperatorTok{=}\NormalTok{ (}
+\NormalTok{    shipments\_with\_category}
+\NormalTok{    .groupby([}\StringTok{\textquotesingle{}shipID\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}prodCategory\textquotesingle{}}\NormalTok{])  }\CommentTok{\# Group by shipment and category}
+\NormalTok{    .agg(\{}
+        \StringTok{\textquotesingle{}is\_late\textquotesingle{}}\NormalTok{: }\StringTok{\textquotesingle{}any\textquotesingle{}}\NormalTok{,  }\CommentTok{\# True if any item in this shipment/category is late}
+        \StringTok{\textquotesingle{}days\_late\textquotesingle{}}\NormalTok{: }\StringTok{\textquotesingle{}max\textquotesingle{}}  \CommentTok{\# Maximum days late for this shipment/category}
+\NormalTok{    \})}
+\NormalTok{    .reset\_index()}
+\NormalTok{    .assign(}
+\NormalTok{        has\_multiple\_categories}\OperatorTok{=}\KeywordTok{lambda}\NormalTok{ df: df.groupby(}\StringTok{\textquotesingle{}shipID\textquotesingle{}}\NormalTok{)[}\StringTok{\textquotesingle{}prodCategory\textquotesingle{}}\NormalTok{].transform(}\StringTok{\textquotesingle{}nunique\textquotesingle{}}\NormalTok{) }\OperatorTok{\textgreater{}} \DecValTok{1}
+\NormalTok{    )}
+\NormalTok{)}
+
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Comprehensive analysis {-} shipments with multiple categories:"}\NormalTok{)}
+\NormalTok{multi\_category\_shipments }\OperatorTok{=}\NormalTok{ comprehensive\_analysis[comprehensive\_analysis[}\StringTok{\textquotesingle{}has\_multiple\_categories\textquotesingle{}}\NormalTok{]]}
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Shipments with multiple categories: }\SpecialCharTok{\{}\NormalTok{multi\_category\_shipments[}\StringTok{\textquotesingle{}shipID\textquotesingle{}}\NormalTok{]}\SpecialCharTok{.}\NormalTok{nunique()}\SpecialCharTok{\}}\SpecialStringTok{"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Total unique shipments: }\SpecialCharTok{\{}\NormalTok{comprehensive\_analysis[}\StringTok{\textquotesingle{}shipID\textquotesingle{}}\NormalTok{]}\SpecialCharTok{.}\NormalTok{nunique()}\SpecialCharTok{\}}\SpecialStringTok{"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Percentage with multiple categories: }\SpecialCharTok{\{}\NormalTok{multi\_category\_shipments[}\StringTok{\textquotesingle{}shipID\textquotesingle{}}\NormalTok{]}\SpecialCharTok{.}\NormalTok{nunique() }\OperatorTok{/}\NormalTok{ comprehensive\_analysis[}\StringTok{\textquotesingle{}shipID\textquotesingle{}}\NormalTok{]}\SpecialCharTok{.}\NormalTok{nunique() }\OperatorTok{*} \DecValTok{100}\SpecialCharTok{:.1f\}}\SpecialStringTok{\%"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Comprehensive analysis - shipments with multiple categories:
+Shipments with multiple categories: 232
+Total unique shipments: 997
+Percentage with multiple categories: 23.3%
+\end{verbatim}
+
+\begin{tcolorbox}[enhanced jigsaw, colbacktitle=quarto-callout-important-color!10!white, opacitybacktitle=0.6, colframe=quarto-callout-important-color-frame, coltitle=black, left=2mm, titlerule=0mm, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{🤔 Discussion Questions: Answering A Business Question}, bottomtitle=1mm, opacityback=0, arc=.35mm, rightrule=.15mm, colback=white, breakable, bottomrule=.15mm, toprule=.15mm, toptitle=1mm, leftrule=.75mm]
+
+\textbf{Question 1: Business Question Analysis} - What business question
+does this comprehensive analysis answer? - How does grouping by
+\texttt{{[}\textquotesingle{}shipID\textquotesingle{},\ \textquotesingle{}prodCategory\textquotesingle{}{]}}
+differ from grouping by just
+\texttt{\textquotesingle{}prodCategory\textquotesingle{}}? - What
+insights can ZappTech's management gain from knowing the percentage of
+multi-category shipments?
+
+\end{tcolorbox}
+
+\paragraph{Briefly Give Answers to the Discussion Questions In This
+Section}\label{briefly-give-answers-to-the-discussion-questions-in-this-section-7}
+
+\begin{quote}
+Replace this with your answers to the discussion questions
+\end{quote}
+
+\subsection{Student Analysis Section: Mastering Data
+Manipulation}\label{student-analysis-section}
+
+\textbf{Your Task:} Demonstrate your mastery of the seven mental models
+through comprehensive discussion and analysis. The bulk of your grade
+comes from thoughtfully answering the discussion questions for each
+mental model. See below for more details.
+
+\subsubsection{Core Challenge: Discussion Questions
+Analysis}\label{core-challenge-discussion-questions-analysis}
+
+\textbf{For each mental model, provide:} - Clear, concise answers to all
+discussion questions - Code examples where appropriate to support your
+explanations
+
+\begin{tcolorbox}[enhanced jigsaw, colbacktitle=quarto-callout-important-color!10!white, opacitybacktitle=0.6, colframe=quarto-callout-important-color-frame, coltitle=black, left=2mm, titlerule=0mm, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{📊 Discussion Questions Requirements}, bottomtitle=1mm, opacityback=0, arc=.35mm, rightrule=.15mm, colback=white, breakable, bottomrule=.15mm, toprule=.15mm, toptitle=1mm, leftrule=.75mm]
+
+\textbf{Complete all discussion question sections:} 1. \textbf{Assign
+Mental Model:} Data types, date handling, and debugging 2.
+\textbf{Subset Mental Model:} Filtering strategies and complex queries
+3. \textbf{Drop Mental Model:} Data cleaning and quality management 4.
+\textbf{Sort Mental Model:} Data organization and business logic 5.
+\textbf{Aggregate Mental Model:} Summary statistics and business metrics
+6. \textbf{Merge Mental Model:} Data integration and quality control 7.
+\textbf{Split-Apply-Combine Mental Model:} Group analysis and advanced
+operations 8. \textbf{Answering A Business Question:} Combining multiple
+data manipulation techniques to answer a business question
+
+\end{tcolorbox}
+
+\subsubsection{Professional Visualizations (For 100\%
+Grade)}\label{professional-visualizations-for-100-grade}
+
+\textbf{Your Task:} Create a professional visualization that supports
+your analysis and demonstrates your understanding of the data.
+
+\textbf{Create visualizations showing:} - Service level (on-time
+percentage) by product category
+
+\textbf{Your visualizations should:} - Use clear labels and professional
+formatting - Support the insights from your discussion questions - Be
+appropriate for a business audience - Do not \texttt{echo} the code that
+creates the visualizations
+
+\subsection{Challenge Requirements 📋}\label{challenge-requirements}
+
+\textbf{Your Primary Task:} Answer all discussion questions for the
+seven mental models with thoughtful, well-reasoned responses that
+demonstrate your understanding of data manipulation concepts.
+
+\textbf{Key Requirements:} - Complete discussion questions for each
+mental model - Demonstrate clear understanding of pandas concepts and
+data manipulation techniques - Write clear, business-focused analysis
+that explains your findings
+
+\subsection{Getting Started: Repository Setup
+🚀}\label{getting-started-repository-setup}
+
+\begin{tcolorbox}[enhanced jigsaw, colbacktitle=quarto-callout-important-color!10!white, opacitybacktitle=0.6, colframe=quarto-callout-important-color-frame, coltitle=black, left=2mm, titlerule=0mm, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{📁 Getting Started}, bottomtitle=1mm, opacityback=0, arc=.35mm, rightrule=.15mm, colback=white, breakable, bottomrule=.15mm, toprule=.15mm, toptitle=1mm, leftrule=.75mm]
+
+\textbf{Step 1:} Fork and clone this challenge repository - Go to the
+course repository and find the ``dataManipulationChallenge'' folder -
+Fork it to your GitHub account, or clone it directly - Open the cloned
+repository in Cursor
+
+\textbf{Step 2:} Set up your Python environment - Follow the Python
+setup instructions above (use your existing venv from Tech Setup
+Challenge Part 2) - Make sure your virtual environment is activated and
+the Python interpreter is set
+
+\textbf{Step 3:} You're ready to start! The data loading code is already
+provided in this file.
+
+\textbf{Note:} This challenge uses the same \texttt{index.qmd} file
+you're reading right now - you'll edit it to complete your analysis.
+
+\end{tcolorbox}
+
+\subsubsection{Getting Started Tips}\label{getting-started-tips}
+
+\begin{tcolorbox}[enhanced jigsaw, colbacktitle=quarto-callout-note-color!10!white, opacitybacktitle=0.6, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{🎯 Method Chaining Philosophy}, bottomtitle=1mm, opacityback=0, arc=.35mm, rightrule=.15mm, colback=white, breakable, bottomrule=.15mm, toprule=.15mm, toptitle=1mm, leftrule=.75mm]
+
+\begin{quote}
+``Each operation should build naturally on the previous one''
+\end{quote}
+
+\emph{Think of method chaining like building with LEGO blocks - each
+piece connects to the next, creating something more complex and useful
+than the individual pieces.}
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[enhanced jigsaw, colbacktitle=quarto-callout-warning-color!10!white, opacitybacktitle=0.6, colframe=quarto-callout-warning-color-frame, coltitle=black, left=2mm, titlerule=0mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{💾 Important: Save Your Work Frequently!}, bottomtitle=1mm, opacityback=0, arc=.35mm, rightrule=.15mm, colback=white, breakable, bottomrule=.15mm, toprule=.15mm, toptitle=1mm, leftrule=.75mm]
+
+\textbf{Before you start:} Make sure to commit your work often using the
+Source Control panel in Cursor (Ctrl+Shift+G or Cmd+Shift+G). This
+prevents the AI from overwriting your progress and ensures you don't
+lose your work.
+
+\textbf{Commit after each major step:}
+
+\begin{itemize}
+\tightlist
+\item
+  After completing each mental model section
+\item
+  After adding your visualizations
+\item
+  After completing your advanced method chain
+\item
+  Before asking the AI for help with new code
+\end{itemize}
+
+\textbf{How to commit:}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Open Source Control panel (Ctrl+Shift+G)
+\item
+  Stage your changes (+ button)
+\item
+  Write a descriptive commit message
+\item
+  Click the checkmark to commit
+\end{enumerate}
+
+\emph{Remember: Frequent commits are your safety net!}
+
+\end{tcolorbox}
+
+\subsection{Grading Rubric 🎓}\label{grading-rubric}
+
+\textbf{75\% Grade:} Complete discussion questions for at least 5 of the
+7 mental models with clear, thoughtful responses.
+
+\textbf{85\% Grade:} Complete discussion questions for all 7 mental
+models with comprehensive, well-reasoned responses.
+
+\textbf{95\% Grade:} Complete all discussion questions plus the
+``Answering A Business Question'' section.
+
+\textbf{100\% Grade:} Complete all discussion questions plus create a
+professional visualization showing service level by product category.
+
+\subsection{Submission Checklist ✅}\label{submission-checklist}
+
+\textbf{Minimum Requirements (Required for Any Points):}
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  Created repository named ``dataManipulationChallenge'' in your GitHub
+  account
+\item[$\square$]
+  Cloned repository locally using Cursor (or VS Code)
+\item[$\square$]
+  Completed discussion questions for at least 5 of the 7 mental models
+\item[$\square$]
+  Document rendered to HTML successfully
+\item[$\square$]
+  HTML files uploaded to your repository
+\item[$\square$]
+  GitHub Pages enabled and working
+\item[$\square$]
+  Site accessible at
+  \texttt{https://{[}your-username{]}.github.io/dataManipulationChallenge/}
+\end{itemize}
+
+\textbf{75\% Grade Requirements:}
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  Complete discussion questions for at least 5 of the 7 mental models
+\item[$\square$]
+  Clear, thoughtful responses that demonstrate understanding
+\item[$\square$]
+  Code examples where appropriate to support explanations
+\end{itemize}
+
+\textbf{85\% Grade Requirements:}
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  Complete discussion questions for all 7 mental models
+\item[$\square$]
+  Comprehensive, well-reasoned responses showing deep understanding
+\item[$\square$]
+  Business context for why concepts matter
+\item[$\square$]
+  Examples of real-world applications
+\end{itemize}
+
+\textbf{95\% Grade Requirements:}
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  Complete discussion questions for all 7 mental models
+\item[$\square$]
+  Complete the ``Answering A Business Question'' discussion questions
+\item[$\square$]
+  Comprehensive, well-reasoned responses showing deep understanding
+\item[$\square$]
+  Business context for why concepts matter
+\end{itemize}
+
+\textbf{100\% Grade Requirements:}
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  All discussion questions completed with professional quality
+\item[$\square$]
+  Professional visualization showing service level by product category
+\item[$\square$]
+  Professional presentation style appropriate for business audience
+\item[$\square$]
+  Clear, engaging narrative that tells a compelling story
+\item[$\square$]
+  Practical insights that would help ZappTech's management
+\end{itemize}
+
+\textbf{Report Quality (Critical for Higher Grades):}
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  Professional writing style (no AI-generated fluff)
+\item[$\square$]
+  Concise analysis that gets to the point
+\end{itemize}
+
+
+
+
+\end{document}
